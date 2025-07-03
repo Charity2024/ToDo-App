@@ -1,0 +1,147 @@
+:root {
+  --bg-color: #f2f4f8;
+  --text-color: #333;
+  --task-bg: #fff;
+  --task-border: #ddd;
+  --btn-bg: #4caf50;
+  --btn-hover: #45a049;
+  --delete-color: #e74c3c;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --task-bg: #1e1e1e;
+  --task-border: #333;
+  --btn-bg: #6dc96d;
+  --btn-hover: #57b657;
+  --delete-color: #f26c6c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+  padding-top: 60px;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
+}
+
+.container {
+  background: var(--task-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  transition: background 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+#toggleTheme {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--task-border);
+  border-radius: 8px;
+  background: var(--task-bg);
+  color: var(--text-color);
+}
+
+#addBtn {
+  padding: 0 16px;
+  font-size: 1.5rem;
+  border: none;
+  background: var(--btn-bg);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#addBtn:hover {
+  background: var(--btn-hover);
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.filterBtn {
+  padding: 5px 10px;
+  border: none;
+  background: #ddd;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filterBtn.active {
+  background: var(--btn-bg);
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 10px;
+  background: var(--bg-color);
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--task-border);
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: #888;
+  background: #ccc;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: none;
+  color: var(--delete-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
