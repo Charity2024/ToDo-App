@@ -161,3 +161,27 @@ li.completed {
   text-decoration: line-through;
   color: #888;
 }
+
+li {
+  padding: 10px;
+  background: var(--bg-color);
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--task-border);
+  transition: transform 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+li.animating {
+  opacity: 0;
+  transform: scale(0.95);
+}
+li {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease, margin 0.3s ease;
+}
+li.animating {
+  opacity: 0;
+  transform: scale(0.95);
+}

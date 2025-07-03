@@ -3,6 +3,7 @@ const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 const themeBtn = document.getElementById("toggleTheme");
 const filterBtns = document.querySelectorAll(".filterBtn");
+const chime = new Audio("chime.mp3");
 
 let currentFilter = "all";
 
@@ -57,9 +58,16 @@ function addTaskToDOM(text, completed) {
   const checkbox = li.querySelector("input[type='checkbox']");
   checkbox.addEventListener("change", () => {
     li.classList.toggle("completed");
-    saveTasks();
-    applyFilter();
-  });
+    if (checkbox.checked) {
+    chime.currentTime = 0;
+    chime.play();
+    animateReorder(li, "down");
+  } else {
+    animateReorder(li, "up");
+  }
+  saveTasks();
+  applyFilter();
+});
 
   li.querySelector(".deleteBtn").addEventListener("click", () => {
     li.remove();
@@ -94,3 +102,17 @@ function applyFilter() {
   });
 }
 
+
+function animateReorder(taskItem, direction) {
+  taskItem.classList.add("animating");
+
+  setTimeout(() => {
+    taskItem.classList.remove("animating");
+
+    if (direction === "down") {
+      taskList.appendChild(taskItem);
+    } else {
+      taskList.prepend(taskItem);
+    }
+  }, 150); // match CSS transition time
+}
