@@ -1,21 +1,25 @@
 :root {
-  --bg-color: #f2f4f8;
-  --text-color: #333;
-  --task-bg: #fff;
-  --task-border: #ddd;
-  --btn-bg: #4caf50;
-  --btn-hover: #45a049;
-  --delete-color: #e74c3c;
+  --bg-color: #f9f9f9;
+  --text-color: #222;
+  --task-bg: #ffffff;
+  --task-border: #e0e0e0;
+  --btn-bg: #3f51b5;
+  --btn-hover: #5c6bc0;
+  --delete-color: #ff6b6b;
+  --accent: #3f51b5;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 body.dark {
   --bg-color: #121212;
-  --text-color: #eee;
+  --text-color: #f0f0f0;
   --task-bg: #1e1e1e;
   --task-border: #333;
-  --btn-bg: #6dc96d;
-  --btn-hover: #57b657;
-  --delete-color: #f26c6c;
+  --btn-bg: #6c8eff;
+  --btn-hover: #809fff;
+  --delete-color: #ff8787;
+  --accent: #8aaaff;
+  --shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -25,68 +29,69 @@ body.dark {
 }
 
 body {
-  background-color: var(--bg-color);
+  background: var(--bg-color);
   font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: start;
   min-height: 100vh;
   padding-top: 60px;
-  transition: background 0.3s ease, color 0.3s ease;
-  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
 }
 
 .container {
   background: var(--task-bg);
+  border-radius: 18px;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 90%;
-  max-width: 400px;
-  transition: background 0.3s ease;
+  max-width: 450px;
+  transition: background 0.3s;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 #toggleTheme {
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 .input-section {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 #taskInput {
   flex: 1;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 12px 16px;
   border: 1px solid var(--task-border);
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
   background: var(--task-bg);
   color: var(--text-color);
 }
 
 #addBtn {
-  padding: 0 16px;
+  background: var(--btn-bg);
+  color: #fff;
   font-size: 1.5rem;
   border: none;
-  background: var(--btn-bg);
-  color: white;
-  border-radius: 8px;
+  padding: 0 18px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -98,21 +103,22 @@ h1 {
 .filters {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .filterBtn {
-  padding: 5px 10px;
+  padding: 6px 14px;
+  background: #e0e0e0;
   border: none;
-  background: #ddd;
-  color: #333;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: #333;
+  transition: background 0.3s ease;
 }
 
 .filterBtn.active {
-  background: var(--btn-bg);
+  background: var(--accent);
   color: white;
 }
 
@@ -121,66 +127,56 @@ ul {
 }
 
 li {
-  padding: 10px;
-  background: var(--bg-color);
-  margin-bottom: 10px;
-  border-radius: 6px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background: var(--task-bg);
   border: 1px solid var(--task-border);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
 }
 
 li.completed {
+  opacity: 0.6;
   text-decoration: line-through;
-  color: #888;
-  background: #ccc;
-}
-
-.deleteBtn {
-  background: transparent;
-  border: none;
-  color: var(--delete-color);
-  font-size: 1rem;
-  cursor: pointer;
 }
 
 .task-label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
   flex: 1;
 }
 
+.task-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
 .task-text {
-  flex: 1;
+  font-size: 1rem;
   word-break: break-word;
 }
-.task-text.completed {
-  text-decoration: line-through;
-  color: #888;
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: var(--delete-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-li {
-  padding: 10px;
-  background: var(--bg-color);
-  margin-bottom: 10px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--task-border);
-  transition: transform 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+.deleteBtn:hover {
+  color: red;
 }
 
-li.animating {
-  opacity: 0;
-  transform: scale(0.95);
-}
-li {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease, margin 0.3s ease;
-}
 li.animating {
   opacity: 0;
   transform: scale(0.95);
