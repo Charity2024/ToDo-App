@@ -47,11 +47,15 @@ function addTaskToDOM(text, completed) {
   if (completed) li.classList.add("completed");
 
   li.innerHTML = `
-    <span>${text}</span>
+    <label class="task-label">
+      <input type="checkbox" ${completed ? "checked" : ""} />
+      <span class="task-text">${text}</span>
+    </label>
     <button class="deleteBtn">&times;</button>
   `;
 
-  li.querySelector("span").addEventListener("click", () => {
+  const checkbox = li.querySelector("input[type='checkbox']");
+  checkbox.addEventListener("change", () => {
     li.classList.toggle("completed");
     saveTasks();
     applyFilter();
@@ -65,6 +69,7 @@ function addTaskToDOM(text, completed) {
 
   taskList.appendChild(li);
 }
+
 
 function saveTasks() {
   const tasks = [];
